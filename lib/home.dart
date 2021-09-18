@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/util/card.dart';
 import 'package:bmi_calculator/util/icon_content.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -27,7 +28,7 @@ class _BMICalculatorState extends State<BMICalculator> {
             child: Row(
               children: const [
                 Expanded(
-                  child: Card(
+                  child: CardContainer(
                     color: clr,
                     cardChild: cardchildWidget(
                       icon: FontAwesomeIcons.mars,
@@ -36,7 +37,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                   ),
                 ),
                 Expanded(
-                    child: Card(
+                    child: CardContainer(
                         color: clr,
                         cardChild: cardchildWidget(
                           icon: FontAwesomeIcons.venus,
@@ -46,7 +47,7 @@ class _BMICalculatorState extends State<BMICalculator> {
             ),
           ),
           const Expanded(
-              child: Card(
+              child: CardContainer(
             color: clr,
             cardChild: cardchildWidget(
               icon: FontAwesomeIcons.mars,
@@ -57,7 +58,7 @@ class _BMICalculatorState extends State<BMICalculator> {
             child: Row(
               children: const [
                 Expanded(
-                    child: Card(
+                    child: CardContainer(
                   color: clr,
                   cardChild: cardchildWidget(
                     icon: FontAwesomeIcons.mars,
@@ -65,7 +66,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                   ),
                 )),
                 Expanded(
-                    child: Card(
+                    child: CardContainer(
                         color: clr,
                         cardChild: cardchildWidget(
                           icon: FontAwesomeIcons.mars,
@@ -81,24 +82,6 @@ class _BMICalculatorState extends State<BMICalculator> {
             margin: const EdgeInsets.only(top: 10.0),
           )
         ],
-      ),
-    );
-  }
-}
-
-class Card extends StatelessWidget {
-  final Color color;
-  final Widget cardChild;
-  const Card({Key? key, required this.color, required this.cardChild})
-      : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: cardChild,
-      margin: const EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(20.0),
       ),
     );
   }
