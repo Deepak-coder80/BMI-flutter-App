@@ -16,6 +16,18 @@ class BMICalculator extends StatefulWidget {
 
 class _BMICalculatorState extends State<BMICalculator> {
   Color malecardColor = inactiveclr;
+  Color femalecardColor = inactiveclr;
+  void updateColor(int gender) {
+    //1-for male , 2-for female
+    if (gender == 1) {
+      malecardColor = activeclr;
+      femalecardColor = inactiveclr;
+    } else if (gender == 2) {
+      femalecardColor = activeclr;
+      malecardColor = inactiveclr;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,23 +46,33 @@ class _BMICalculatorState extends State<BMICalculator> {
                   child: GestureDetector(
                     onTap: () {
                       //print("Male pressed");
+                      setState(() {
+                        updateColor(1);
+                      });
                     },
-                    child: const CardContainer(
-                      color: inactiveclr,
-                      cardChild: cardchildWidget(
+                    child: CardContainer(
+                      color: malecardColor,
+                      cardChild: const cardchildWidget(
                         icon: FontAwesomeIcons.mars,
                         label: "MALE",
                       ),
                     ),
                   ),
                 ),
-                const Expanded(
-                    child: CardContainer(
-                        color: clr,
-                        cardChild: cardchildWidget(
-                          icon: FontAwesomeIcons.venus,
-                          label: "FEMALE",
-                        ))),
+                Expanded(
+                    child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      updateColor(2);
+                    });
+                  },
+                  child: CardContainer(
+                      color: femalecardColor,
+                      cardChild: const cardchildWidget(
+                        icon: FontAwesomeIcons.venus,
+                        label: "FEMALE",
+                      )),
+                )),
               ],
             ),
           ),
