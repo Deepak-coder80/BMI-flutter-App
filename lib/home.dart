@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const Color clr = Color(0xFF1D1E33);
 
@@ -23,30 +24,52 @@ class _BMICalculatorState extends State<BMICalculator> {
         children: [
           Expanded(
             child: Row(
-              children: [
+              children: const [
+                Expanded(
+                  child: Card(
+                    color: clr,
+                    cardChild: cardchildWidget(
+                      icon: FontAwesomeIcons.mars,
+                      label: "MALE",
+                    ),
+                  ),
+                ),
                 Expanded(
                     child: Card(
-                  color: clr,
-                )),
-                Expanded(child: Card(color: clr)),
+                        color: clr,
+                        cardChild: cardchildWidget(
+                          icon: FontAwesomeIcons.venus,
+                          label: "FEMALE",
+                        ))),
               ],
             ),
           ),
-          Expanded(
+          const Expanded(
               child: Card(
             color: clr,
+            cardChild: cardchildWidget(
+              icon: FontAwesomeIcons.mars,
+              label: "MALE",
+            ),
           )),
           Expanded(
             child: Row(
-              children: [
+              children: const [
                 Expanded(
                     child: Card(
                   color: clr,
+                  cardChild: cardchildWidget(
+                    icon: FontAwesomeIcons.mars,
+                    label: "MALE",
+                  ),
                 )),
                 Expanded(
                     child: Card(
-                  color: clr,
-                )),
+                        color: clr,
+                        cardChild: cardchildWidget(
+                          icon: FontAwesomeIcons.mars,
+                          label: "MALE",
+                        ))),
               ],
             ),
           ),
@@ -62,12 +85,51 @@ class _BMICalculatorState extends State<BMICalculator> {
   }
 }
 
+class cardchildWidget extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  const cardchildWidget({
+    Key? key,
+    required this.icon,
+    required this.label,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(
+          icon,
+          color: Colors.white,
+          size: 80,
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 18,
+            color: Color(
+              0xFF8D8E98,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class Card extends StatelessWidget {
   final Color color;
-  Card({Key? key, required this.color}) : super(key: key);
+  final Widget cardChild;
+  const Card({Key? key, required this.color, required this.cardChild})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: cardChild,
       margin: const EdgeInsets.all(15.0),
       decoration: BoxDecoration(
         color: color,
