@@ -1,6 +1,6 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
+
+const Color clr = Color(0xFF1D1E33);
 
 class BMICalculator extends StatefulWidget {
   const BMICalculator({Key? key}) : super(key: key);
@@ -26,30 +26,36 @@ class _BMICalculatorState extends State<BMICalculator> {
               children: [
                 Expanded(
                     child: Card(
-                  color: const Color(0xFF1D1E33),
+                  color: clr,
                 )),
-                Expanded(child: Card(color: const Color(0xFF1D1E33))),
+                Expanded(child: Card(color: clr)),
               ],
             ),
           ),
           Expanded(
               child: Card(
-            color: const Color(0xFF1D1E33),
+            color: clr,
           )),
           Expanded(
             child: Row(
               children: [
                 Expanded(
                     child: Card(
-                  color: const Color(0xFF1D1E33),
+                  color: clr,
                 )),
                 Expanded(
                     child: Card(
-                  color: const Color(0xFF1D1E33),
+                  color: clr,
                 )),
               ],
             ),
           ),
+          Container(
+            color: const Color(0xFFEB1555),
+            height: 88.0,
+            width: double.infinity,
+            margin: const EdgeInsets.only(top: 10.0),
+          )
         ],
       ),
     );
@@ -57,7 +63,7 @@ class _BMICalculatorState extends State<BMICalculator> {
 }
 
 class Card extends StatelessWidget {
-  Color color;
+  final Color color;
   Card({Key? key, required this.color}) : super(key: key);
   @override
   Widget build(BuildContext context) {
