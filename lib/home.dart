@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const Color clr = Color(0xFF1D1E33);
+const Color activeclr = Color(0xFF1D1E33);
+const Color inactiveclr = Color(0xFF111328);
 
 class BMICalculator extends StatefulWidget {
   const BMICalculator({Key? key}) : super(key: key);
@@ -13,6 +15,7 @@ class BMICalculator extends StatefulWidget {
 }
 
 class _BMICalculatorState extends State<BMICalculator> {
+  Color malecardColor = inactiveclr;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,17 +29,22 @@ class _BMICalculatorState extends State<BMICalculator> {
         children: [
           Expanded(
             child: Row(
-              children: const [
+              children: [
                 Expanded(
-                  child: CardContainer(
-                    color: clr,
-                    cardChild: cardchildWidget(
-                      icon: FontAwesomeIcons.mars,
-                      label: "MALE",
+                  child: GestureDetector(
+                    onTap: () {
+                      //print("Male pressed");
+                    },
+                    child: const CardContainer(
+                      color: inactiveclr,
+                      cardChild: cardchildWidget(
+                        icon: FontAwesomeIcons.mars,
+                        label: "MALE",
+                      ),
                     ),
                   ),
                 ),
-                Expanded(
+                const Expanded(
                     child: CardContainer(
                         color: clr,
                         cardChild: cardchildWidget(
