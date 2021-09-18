@@ -17,15 +17,36 @@ class _BMICalculatorState extends State<BMICalculator> {
         backgroundColor: const Color(0xFF0A0E21),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          "Body Text",
-          style: TextStyle(color: Colors.white),
-        ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(child: card()),
+                Expanded(child: card()),
+              ],
+            ),
+          ),
+          Expanded(child: card()),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(child: card()),
+                Expanded(child: card()),
+              ],
+            ),
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
+    );
+  }
+
+  Widget card() {
+    return Container(
+      margin: const EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFF1D1E33),
+        borderRadius: BorderRadius.circular(20.0),
       ),
     );
   }
