@@ -134,7 +134,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                         children: [
                           RoundButton(
                             icn: FontAwesomeIcons.minus,
-                            onPressed: () {
+                            onPsd: () {
                               setState(() {
                                 weight--;
                               });
@@ -145,7 +145,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                           ),
                           RoundButton(
                             icn: FontAwesomeIcons.plus,
-                            onPressed: () {
+                            onPsd: () {
                               setState(() {
                                 weight++;
                               });

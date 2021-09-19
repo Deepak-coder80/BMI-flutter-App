@@ -1,18 +1,20 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
 
 class RoundButton extends StatelessWidget {
   final IconData icn;
-  final Function onPressed;
-  const RoundButton({
+  final Function onPsd;
+  RoundButton({
     Key? key,
     required this.icn,
-    required this.onPressed,
+    required this.onPsd,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      onPressed: onPressed(),
+      onPressed: onPsd(),
       elevation: 6.0,
       constraints: const BoxConstraints.tightFor(
         width: 56.0,
