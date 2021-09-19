@@ -1,20 +1,21 @@
+import 'package:bmi_calculator/calculate.dart';
 import 'package:bmi_calculator/constants/constants.dart';
+import 'package:bmi_calculator/screens/resultpage.dart';
 import 'package:bmi_calculator/util/card.dart';
 import 'package:bmi_calculator/util/icon_content.dart';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-const Color clr = Color(0xFF1D1E33);
-const Color activeclr = Color(0xFF1D1E33);
-const Color inactiveclr = Color(0xFF111328);
 enum Gender {
   male,
   female,
 }
 
 class BMICalculator extends StatefulWidget {
-  const BMICalculator({Key? key}) : super(key: key);
+  const BMICalculator({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _BMICalculatorState createState() => _BMICalculatorState();
@@ -239,11 +240,31 @@ class _BMICalculatorState extends State<BMICalculator> {
               ],
             ),
           ),
-          Container(
-            color: const Color(0xFFEB1555),
-            height: 88.0,
-            width: double.infinity,
-            margin: const EdgeInsets.only(top: 10.0),
+          GestureDetector(
+            onTap: () {
+              BMICalculate calc = BMICalculate(height, weight);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ResultPage(
+                            bmiResult: calc.calculateBMI(),
+                            resultText: calc.getResult(),
+                            interpretation: calc.getInstruction(),
+                          )));
+            },
+            child: Container(
+              child: const Center(
+                child: Text(
+                  "CALCULATE",
+                  style: kbottomTextStyle,
+                ),
+              ),
+              color: const Color(0xFFEB1555),
+              height: 88.0,
+              width: double.infinity,
+              margin: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(bottom: 20.0),
+            ),
           )
         ],
       ),
