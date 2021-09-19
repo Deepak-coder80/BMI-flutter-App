@@ -45,8 +45,10 @@ class ResultPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      resultText,
-                      style: kResultTextStyle,
+                      resultText.toUpperCase(),
+                      style: resultText == "Normal"
+                          ? kResultTextStyle
+                          : kResultTextStyle2,
                     ),
                     Text(
                       bmiResult,
