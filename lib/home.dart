@@ -1,7 +1,7 @@
 import 'package:bmi_calculator/constants/constants.dart';
 import 'package:bmi_calculator/util/card.dart';
 import 'package:bmi_calculator/util/icon_content.dart';
-import 'package:bmi_calculator/util/roundbutton.dart';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -24,6 +24,7 @@ class _BMICalculatorState extends State<BMICalculator> {
   Gender selectedGender = Gender.female;
   int height = 180;
   int weight = 60;
+  int age = 19;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,37 +133,109 @@ class _BMICalculatorState extends State<BMICalculator> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          RoundButton(
-                            icn: FontAwesomeIcons.minus,
-                            onPsd: () {
+                          RawMaterialButton(
+                            onPressed: () {
                               setState(() {
                                 weight--;
                               });
                             },
+                            elevation: 6.0,
+                            constraints: const BoxConstraints.tightFor(
+                              width: 56.0,
+                              height: 56.0,
+                            ),
+                            shape: const CircleBorder(),
+                            fillColor: const Color(0xFF4C4F5E),
+                            child: const Icon(
+                              FontAwesomeIcons.minus,
+                              color: Colors.white,
+                            ),
                           ),
                           const SizedBox(
                             width: 20,
                           ),
-                          RoundButton(
-                            icn: FontAwesomeIcons.plus,
-                            onPsd: () {
+                          RawMaterialButton(
+                            onPressed: () {
                               setState(() {
                                 weight++;
                               });
                             },
+                            elevation: 6.0,
+                            constraints: const BoxConstraints.tightFor(
+                              width: 56.0,
+                              height: 56.0,
+                            ),
+                            shape: const CircleBorder(),
+                            fillColor: const Color(0xFF4C4F5E),
+                            child: const Icon(
+                              FontAwesomeIcons.plus,
+                              color: Colors.white,
+                            ),
                           ),
                         ],
                       )
                     ],
                   ),
                 )),
-                const Expanded(
-                    child: CardContainer(
-                        color: clr,
-                        cardChild: cardchildWidget(
-                          icon: FontAwesomeIcons.mars,
-                          label: "MALE",
-                        ))),
+                Expanded(
+                  child: CardContainer(
+                    color: clr,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "AGE",
+                          style: kHeadingTextStyle,
+                        ),
+                        Text(age.toString(), style: kNumberTextStyle),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RawMaterialButton(
+                              onPressed: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                              elevation: 6.0,
+                              constraints: const BoxConstraints.tightFor(
+                                width: 56.0,
+                                height: 56.0,
+                              ),
+                              shape: const CircleBorder(),
+                              fillColor: const Color(0xFF4C4F5E),
+                              child: const Icon(
+                                FontAwesomeIcons.minus,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            RawMaterialButton(
+                              onPressed: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                              elevation: 6.0,
+                              constraints: const BoxConstraints.tightFor(
+                                width: 56.0,
+                                height: 56.0,
+                              ),
+                              shape: const CircleBorder(),
+                              fillColor: const Color(0xFF4C4F5E),
+                              child: const Icon(
+                                FontAwesomeIcons.plus,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
